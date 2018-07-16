@@ -16,12 +16,10 @@ public class MainActivity extends AppCompatActivity {
         count.addObserver(new CountObserver());
         count.setCount(1);
         count.setCount(2);
-        count.setCount(1);
+        count.setCount(3);
     }
     public static class CountObservable extends Observable {
-        private int count;
-        public void setCount(int c){
-            count += c;
+        public void setCount(int count){
             setChanged();//一定要標記這個方法 不然無法不會發出通知
 //            notifyObservers();//通知所有的觀察者
             notifyObservers(count);
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void update(Observable o, Object arg) {
-            System.out.println("count = " + arg);
+            System.out.println("!!<count = " + arg);
         }
     }
 }
